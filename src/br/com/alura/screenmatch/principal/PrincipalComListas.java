@@ -1,8 +1,8 @@
 package br.com.alura.screenmatch.principal;
 
-import br.com.alura.screenmatch.modelos.Filme;
-import br.com.alura.screenmatch.modelos.Serie;
-import br.com.alura.screenmatch.modelos.Titulo;
+import br.com.alura.screenmatch.modelos.Film;
+import br.com.alura.screenmatch.modelos.Series;
+import br.com.alura.screenmatch.modelos.Title;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,25 +12,23 @@ import java.util.List;
 
 public class PrincipalComListas {
     public static void main(String[] args) {
-        Filme meuFilme = new Filme("O poderoso chefão", 1970);
-        meuFilme.avalia(9);
-        Filme outroFilme = new Filme("Avatar", 2023);
-        outroFilme.avalia(6);
-        var filmeDoPaulo = new Filme("Dogville", 2003);
-        filmeDoPaulo.avalia(10);
-        Serie lost = new Serie("Lost", 2000);
+        Film meuFilm = new Film("O poderoso chefão", 1970);
+        meuFilm.submitRating(9);
+        Film outroFilm = new Film("Avatar", 2023);
+        outroFilm.submitRating(6);
+        var filmeDoPaulo = new Film("Dogville", 2003);
+        filmeDoPaulo.submitRating(10);
+        Series lost = new Series("Lost", 2000);
 
-        Filme f1 = filmeDoPaulo;
-
-        ArrayList<Titulo> lista = new ArrayList<>();
+        ArrayList<Title> lista = new ArrayList<>();
         lista.add(filmeDoPaulo);
-        lista.add(meuFilme);
-        lista.add(outroFilme);
+        lista.add(meuFilm);
+        lista.add(outroFilm);
         lista.add(lost);
-        for (Titulo item: lista) {
-            System.out.println(item.getNome());
-            if (item instanceof  Filme filme && filme.getClassificacao() > 2) {
-                System.out.println("Classificação " + filme.getClassificacao());
+        for (Title item: lista) {
+            System.out.println(item.getName());
+            if (item instanceof  Film film && film.getClassification() > 2) {
+                System.out.println("Classificação " + film.getClassification());
             }
         }
 
@@ -46,7 +44,7 @@ public class PrincipalComListas {
         System.out.println("Lista de titulos ordenados");
         Collections.sort(lista);
         System.out.println(lista);
-        lista.sort(Comparator.comparing(Titulo::getAnoDeLancamento));
+        lista.sort(Comparator.comparing(Title::getYearReleased));
         System.out.println("Ordenando por ano");
         System.out.println(lista);
     }
